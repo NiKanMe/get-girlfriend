@@ -44,7 +44,6 @@ def send_message():
 
 def tz():
     url=f"https://api.uomg.com/api/rand.qinghua"
-#    url=f"https://v2.alapi.cn/api/dog?token=uRvtwvbA7IuS2zBB"
     resp=requests.get(url)
     result=resp.json()
     return result['content']
