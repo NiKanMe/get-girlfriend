@@ -2,6 +2,7 @@ import json
 import requests
 import datetime
 import re
+import random
 '''
 
 2022/8/23
@@ -74,6 +75,14 @@ def tqtest():
     resulttq=resp.json()
     return resulttq
 resulttq=tqtest()
+
+def randomcolor():
+    colorarr =['1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
+    color = ""
+    for i in range(6):
+        color+=colorarr[random.randint(0,14)]
+    return "#"+color
+
 json_data = {"first": mss, "word1": resulttq['data']['city']+","+resulttq['data']['forecast'][0]['type'],"word2":resulttq['data']['wendu']+"度","mss":tz(),"word3":lovets(),"word4":birthday(nvbirthday),"word5":re.sub("\D", "",resulttq['data']['forecast'][0]['high'])+"度","word6":re.sub("\D", "",resulttq['data']['forecast'][0]['low'])+"度","word7":resulttq['data']['ganmao'],"word8":birthday(nanbirthday),"date":str(datetime.datetime.now().strftime('%Y-%m-%d'))+' '+week_list[datetime.datetime.now().weekday()]}
 def message():
     return {
@@ -85,47 +94,47 @@ def message():
             "first": {
                 "value": json_data["first"],
                 # 字体颜色
-                "color": "#173177"
+                "color": randomcolor()
             },
             "word1": {
                 "value": json_data["word1"],
-                "color": "#173177"
+                "color": randomcolor()
             },
             "word2": {
                 "value": json_data["word2"],
-                "color": "#173177"
+                "color": randomcolor()
             },
             "word3":{
-                "value": json_data["word3"],
-                "color": "#173177"
+                "value": lovets(),
+                "color": randomcolor()
             },
             "word4":{
                 "value": json_data["word4"],
-                "color": "#173177"
+                "color": randomcolor()
             },
             "word5":{
                 "value": json_data["word5"],
-                "color": "#173177"
+                "color": randomcolor()
             },
             "word6":{
                 "value": json_data["word6"],
-                "color": "#173177"
+                "color": randomcolor()
             },
             "word7":{
                 "value": json_data["word7"],
-                "color": "#173177"
+                "color": randomcolor()
             },
             "mss":{
                 "value": json_data["mss"],
-                "color": "#173177"
+                "color": randomcolor()
             },
             "data":{
                 "value": json_data["date"],
-                "color": "#173177"
+                "color": randomcolor()
             },
             "word8":{
                 "value": json_data["word8"],
-                "color": "#173177"
+                "color": randomcolor()
             },
         }
     }
