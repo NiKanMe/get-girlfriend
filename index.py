@@ -10,15 +10,16 @@ Locustdy
 有问题请联系QQ：1424305473
 
 '''
+
 appID = "" #微信测试平台appID
 appsecret = "" #微信测试平台appsecret
 User = '' #微信测试平台用户列表微信号
 Message_id = '' #微信测试平台模板消息接口ID
-string='2021-10-13 12:30:30' #恋爱时间
-nanbirthday='12-29' #你的生日 格式 mm-dd 例如 12-29
-nvbirthday='01-01' #女朋友的生日
-city='北京' #天气显示城市
-mss='你好' #你想说的话
+string='' #计算时间差时间
+nanbirthday='' #你的生日 格式 mm-dd 例如 12-29
+nvbirthday='' #女朋友的生日
+city='' #天气显示城市
+mss='' #你想说的话
 week_list = ["星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
 #下边不用动了
 def Accesstoken():
@@ -74,7 +75,7 @@ def tqtest():
     resp=requests.get(url)
     resulttq=resp.json()
     return resulttq
-resulttq=tqtest()
+
 
 def randomcolor():
     colorarr =['1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
@@ -83,7 +84,9 @@ def randomcolor():
         color+=colorarr[random.randint(0,14)]
     return "#"+color
 
-json_data = {"first": mss, "word1": resulttq['data']['city']+","+resulttq['data']['forecast'][0]['type'],"word2":resulttq['data']['wendu']+"度","mss":tz(),"word3":lovets(),"word4":birthday(nvbirthday),"word5":re.sub("\D", "",resulttq['data']['forecast'][0]['high'])+"度","word6":re.sub("\D", "",resulttq['data']['forecast'][0]['low'])+"度","word7":resulttq['data']['ganmao'],"word8":birthday(nanbirthday),"date":str(datetime.datetime.now().strftime('%Y-%m-%d'))+' '+week_list[datetime.datetime.now().weekday()]}
+
+resulttq=tqtest()
+json_data = {"first": mss, "word1": resulttq['data']['city']+","+resulttq['data']['forecast'][0]['type'],"word2":resulttq['data']['wendu']+"度","mss":tz(),"word4":birthday(nvbirthday),"word5":re.sub("\D", "",resulttq['data']['forecast'][0]['high'])+"度","word6":re.sub("\D", "",resulttq['data']['forecast'][0]['low'])+"度","word7":resulttq['data']['ganmao'],"word8":birthday(nanbirthday),"date":str(datetime.datetime.now().strftime('%Y-%m-%d'))+' '+week_list[datetime.datetime.now().weekday()],"color":randomcolor()}
 def message():
     return {
         "touser": User,
@@ -92,16 +95,16 @@ def message():
         # json数据对应模板
         "data": {
             "first": {
-                "value": json_data["first"],
+                "value": mss,
                 # 字体颜色
                 "color": randomcolor()
             },
             "word1": {
-                "value": json_data["word1"],
+                "value": resulttq['data']['city']+","+resulttq['data']['forecast'][0]['type'],
                 "color": randomcolor()
             },
             "word2": {
-                "value": json_data["word2"],
+                "value": resulttq['data']['wendu']+"度",
                 "color": randomcolor()
             },
             "word3":{
@@ -109,38 +112,36 @@ def message():
                 "color": randomcolor()
             },
             "word4":{
-                "value": json_data["word4"],
+                "value": birthday(nvbirthday),
                 "color": randomcolor()
             },
             "word5":{
-                "value": json_data["word5"],
+                "value": re.sub("\D", "",resulttq['data']['forecast'][0]['high'])+"度",
                 "color": randomcolor()
             },
             "word6":{
-                "value": json_data["word6"],
+                "value": re.sub("\D", "",resulttq['data']['forecast'][0]['low'])+"度",
                 "color": randomcolor()
             },
             "word7":{
-                "value": json_data["word7"],
-                "color": randomcolor()
+                "value": resulttq['data']['ganmao'],
+                "color": "#173177"
             },
             "mss":{
-                "value": json_data["mss"],
+                "value": tz(),
                 "color": randomcolor()
             },
             "data":{
-                "value": json_data["date"],
-                "color": randomcolor()
+                "value": str(datetime.datetime.now().strftime('%Y-%m-%d'))+' '+week_list[datetime.datetime.now().weekday()],
+                "color": "#173177"
             },
             "word8":{
-                "value": json_data["word8"],
+                "value": birthday(nanbirthday),
                 "color": randomcolor()
             },
         }
     }
-send_message()
-'''
+
 def main_handler(a,b):
     print(json_data)
     return send_message()
-'''
