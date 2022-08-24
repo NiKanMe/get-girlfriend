@@ -144,5 +144,4 @@ def message():
 
 def main_handler(a,b):
     print(json_data)
-    
     return send_message()
