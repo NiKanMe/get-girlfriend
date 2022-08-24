@@ -94,7 +94,7 @@ def message():
         # json数据对应模板
         "data": {
             "first": {
-                "value": mss,
+                "value": json_data["first"],
                 # 字体颜色
                 "color": randomcolor()
             },
