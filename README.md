@@ -10,6 +10,8 @@
 2.耐心  
 3.一个微信公众号，或者微信公众号测试号  
 4.注意 必须下载完整文件夹
+5.微信模板  
+`{{first.DATA}} {{data.DATA}} 今天天气：{{word1.DATA}} 今天最高气温：{{word5.DATA}} 今天最低气温：{{word6.DATA}} 现在温度：{{word2.DATA}} {{word7.DATA}} 距离宝宝的生日还有：{{word4.DATA}} 距离我的的生日还有：{{word8.DATA}} 我们在一起已经：{{word3.DATA}} {{mss.DATA}}`
 #### 安装教程
 
 1.  下载wechat-auto-push-template文件夹到本地  
