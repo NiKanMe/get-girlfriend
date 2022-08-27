@@ -8,12 +8,12 @@ import random
 appID = "wx93469957227126f9" #微信测试平台appID
 appsecret = "c69d363323edb14025c2abcba1a6903c" #微信测试平台appsecret
 User = 'o3Z7p5-7pFu4W-kjGkjlCCf6xb0U' #微信测试平台用户列表微信号
-Message_id = '' #微信测试平台模板消息接口ID
+Message_id = 'URPEY0pZVGNBlKgkgT-zoR1ajWuNFiCI-yyWoK95PG8' #微信测试平台模板消息接口ID
 string='' #计算时间差时间 格式 2021-10-13 12:30:30
 nanbirthday='12-15' #你的生日 格式 mm-dd 例如 12-29
 nvbirthday='08-28' #女朋友的生日
 city='资阳' #天气显示城市
-mss='乖乖，早上好！！！' #你想说的话
+mss='今天继续努力！！' #你想说的话
 week_list = ["星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
 #下边不用动了
 def Accesstoken():
